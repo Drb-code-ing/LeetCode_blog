@@ -1,0 +1,17 @@
+[    7433ms] [LOG] windows @ https://static.leetcode.cn/cn-frontendx-assets/production/_next/static/chunks/pages/_app-4b4e114e75a7c7ab.js:17
+[    7649ms] [LOG] U-Link loadSolution success:  {appkey: 5fcda41c42348b56d6f8e8d5, type: scheme, wakeupUrl: leetcode://umeng.com/leetcode/main/activity?_ukid=…6utm_campaign%253Dtransfer2china&_bizType_=ushare, downloadUrl: https://static.leetcode.cn/android/stable/app-com.lingkou.leetcode-latest.apk, clipboardToken: } @ https://static.leetcode.cn/cn-frontendx-assets/production/_next/static/chunks/pages/_app-4b4e114e75a7c7ab.js:17
+[    8130ms] [COUNT] %c%d: 1 @ https://g.alicdn.com/captcha-frontend/FeiLin/1.4.2/feilin054.14e6dcf06dd6147e5a9b8104fcf859e88593a73f98e505baceded22de394037d.js:0
+[    8131ms] [DIR] %c%d font-size:0;color:transparent Error @ https://g.alicdn.com/captcha-frontend/FeiLin/1.4.2/feilin054.14e6dcf06dd6147e5a9b8104fcf859e88593a73f98e505baceded22de394037d.js:0
+[    8131ms] [DIRXML] %c%d font-size:0;color:transparent Error @ https://g.alicdn.com/captcha-frontend/FeiLin/1.4.2/feilin054.14e6dcf06dd6147e5a9b8104fcf859e88593a73f98e505baceded22de394037d.js:0
+[    8131ms] [INFO] %c%d font-size:0;color:transparent NaN @ https://static.leetcode.cn/cn-frontendx-assets/production/_next/static/chunks/pages/_app-4b4e114e75a7c7ab.js:17
+[    8131ms] [INFO] %c%d font-size:0;color:transparent NaN @ https://static.leetcode.cn/cn-frontendx-assets/production/_next/static/chunks/pages/_app-4b4e114e75a7c7ab.js:17
+[    8131ms] [LOG] %c%d font-size:0;color:transparent NaN @ https://static.leetcode.cn/cn-frontendx-assets/production/_next/static/chunks/pages/_app-4b4e114e75a7c7ab.js:17
+[    8131ms] [TABLE] %c%d font-size:0;color:transparent Error @ https://g.alicdn.com/captcha-frontend/FeiLin/1.4.2/feilin054.14e6dcf06dd6147e5a9b8104fcf859e88593a73f98e505baceded22de394037d.js:0
+[    8131ms] [INFO] %c%d font-size:0;color:transparent NaN @ https://static.leetcode.cn/cn-frontendx-assets/production/_next/static/chunks/pages/_app-4b4e114e75a7c7ab.js:17
+[   25657ms] [ERROR] TypeError: Failed to fetch
+    at https://leetcode.com/_next/static/chunks/pages/_app-11fe7a2014cb75e0.js:5994:135014
+    at o (https://leetcode.com/_next/static/chunks/pages/_app-11fe7a2014cb75e0.js:1:16051)
+    at https://leetcode.com/_next/static/chunks/pages/_app-11fe7a2014cb75e0.js:1:16814
+    at async s (https://leetcode.com/_next/static/chunks/pages/_app-11fe7a2014cb75e0.js:1:17479)
+    at async r (https://leetcode.com/_next/static/chunks/pages/_app-11fe7a2014cb75e0.js:1:18704)
+    at async f.run (https://leetcode.com/_next/static/chunks/pages/_app-11fe7a2014cb75e0.js:1:18187) @ https://leetcode.com/_next/static/chunks/pages/_app-11fe7a2014cb75e0.js:5993

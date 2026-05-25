@@ -1,0 +1,338 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - navigation [ref=e7]:
+        - list [ref=e9]:
+          - link "LeetCode Logo" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e11]:
+              - generic:
+                - img "LeetCode Logo"
+          - listitem [ref=e12]
+        - generic [ref=e14]:
+          - generic [ref=e19]:
+            - generic:
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                      - generic: Debugging...
+                  - generic:
+                    - generic:
+                      - button [disabled]:
+                        - img
+                      - button [disabled]:
+                        - img
+                      - button [disabled]:
+                        - img
+                      - button [disabled]:
+                        - img
+                      - button [disabled]:
+                        - img
+            - generic [ref=e21]:
+              - button "You need to log in / sign up to debug" [ref=e23] [cursor=pointer]:
+                - img [ref=e24]
+              - generic [ref=e27]:
+                - button "Run" [ref=e30]:
+                  - img [ref=e32]
+                - button "Submit" [ref=e37]:
+                  - img [ref=e39]
+                  - generic [ref=e41]: Submit
+          - generic [ref=e43]:
+            - button "Note" [ref=e46] [cursor=pointer]:
+              - img [ref=e48]
+            - button "Ask Leet" [ref=e52] [cursor=pointer]:
+              - img [ref=e53]
+        - generic [ref=e58]:
+          - button "Layouts" [ref=e59] [cursor=pointer]:
+            - button "Layouts" [ref=e60]:
+              - img [ref=e62]
+          - button "Settings" [ref=e64] [cursor=pointer]:
+            - img [ref=e66]
+          - generic [ref=e70]:
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                - button:
+                  - generic:
+                    - img
+                  - generic: 00:00:00
+                - button:
+                  - generic:
+                    - img
+            - button "Stopwatch" [ref=e73] [cursor=pointer]:
+              - img [ref=e76]
+          - generic [ref=e78]:
+            - link "Register" [ref=e79] [cursor=pointer]:
+              - /url: /accounts/signup/?next=%2Fproblems%2Ftrapping-rain-water%2Fdescription%2F
+            - generic [ref=e80]: or
+            - link "Log in" [ref=e81] [cursor=pointer]:
+              - /url: /accounts/login/?next=%2Fproblems%2Ftrapping-rain-water%2Fdescription%2F
+          - link "Premium" [ref=e83] [cursor=pointer]:
+            - /url: /subscribe/?ref=lp_pl&source=qd
+            - generic [ref=e84]: Premium
+      - generic [ref=e87]:
+        - generic [ref=e91] [cursor=pointer]:
+          - generic [ref=e94]:
+            - img [ref=e96]
+            - generic [ref=e99]: Description
+          - generic [ref=e103]:
+            - img [ref=e105]
+            - generic [ref=e107]:
+              - generic [ref=e108]: Editorial
+              - generic [ref=e109]: Editorial
+          - generic [ref=e113]:
+            - img [ref=e115]
+            - generic [ref=e117]:
+              - generic [ref=e118]: Solutions
+              - generic [ref=e119]: Solutions
+          - generic [ref=e123]:
+            - img [ref=e125]
+            - generic [ref=e127]:
+              - generic [ref=e128]: Submissions
+              - generic [ref=e129]: Submissions
+        - generic [ref=e137] [cursor=pointer]:
+          - img [ref=e139]
+          - generic [ref=e142]: Code
+        - generic [ref=e147] [cursor=pointer]:
+          - generic [ref=e150]:
+            - img [ref=e152]
+            - generic [ref=e155]: Testcase
+          - generic [ref=e159]:
+            - img [ref=e161]
+            - generic [ref=e163]:
+              - generic [ref=e164]: Test Result
+              - generic [ref=e165]: Test Result
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - link "42. Trapping Rain Water" [ref=e172]:
+              - /url: /problems/trapping-rain-water/
+            - generic [ref=e173]:
+              - generic [ref=e174]: Hard
+              - generic [ref=e175] [cursor=pointer]:
+                - img [ref=e177]
+                - text: Topics
+              - generic [ref=e179] [cursor=pointer]:
+                - img "premium lock icon" [ref=e180]
+                - generic [ref=e181]: Companies
+            - generic [ref=e184]:
+              - paragraph [ref=e185]:
+                - text: Given
+                - code [ref=e186]: "n"
+                - text: non-negative integers representing an elevation map where the width of each bar is
+                - code [ref=e187]: "1"
+                - text: ", compute how much water it can trap after raining."
+              - paragraph [ref=e188]
+              - paragraph [ref=e189]:
+                - strong [ref=e190]: "Example 1:"
+              - img
+              - generic [ref=e191]:
+                - strong [ref=e192]: "Input:"
+                - text: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+                - strong [ref=e193]: "Output:"
+                - text: "6"
+                - strong [ref=e194]: "Explanation:"
+                - text: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+              - paragraph [ref=e195]:
+                - strong [ref=e196]: "Example 2:"
+              - generic [ref=e197]:
+                - strong [ref=e198]: "Input:"
+                - text: height = [4,2,0,3,2,5]
+                - strong [ref=e199]: "Output:"
+                - text: "9"
+              - paragraph [ref=e200]
+              - paragraph [ref=e201]:
+                - strong [ref=e202]: "Constraints:"
+              - list [ref=e203]:
+                - listitem [ref=e204]:
+                  - code [ref=e205]: n == height.length
+                - listitem [ref=e206]:
+                  - code [ref=e207]:
+                    - text: 1 <= n <= 2 * 10
+                    - superscript [ref=e208]: "4"
+                - listitem [ref=e209]:
+                  - code [ref=e210]:
+                    - text: 0 <= height[i] <= 10
+                    - superscript [ref=e211]: "5"
+            - generic [ref=e212]:
+              - generic [ref=e213]:
+                - generic [ref=e214]:
+                  - generic [ref=e215]: Accepted
+                  - generic [ref=e216]:
+                    - text: 3,577,827
+                    - generic [ref=e217]: /5.3M
+                - generic [ref=e219]:
+                  - generic [ref=e220]: Acceptance Rate
+                  - generic [ref=e221]: 67.4%
+              - separator [ref=e222]
+              - generic [ref=e224]:
+                - generic [ref=e225] [cursor=pointer]:
+                  - generic [ref=e227]:
+                    - img [ref=e229]
+                    - generic [ref=e231]: Topics
+                  - img [ref=e233]
+                - generic [ref=e235]:
+                  - link "Array" [ref=e236] [cursor=pointer]:
+                    - /url: /tag/array/
+                  - link "Two Pointers" [ref=e237] [cursor=pointer]:
+                    - /url: /tag/two-pointers/
+                  - link "Dynamic Programming" [ref=e238] [cursor=pointer]:
+                    - /url: /tag/dynamic-programming/
+                  - link "Stack" [ref=e239] [cursor=pointer]:
+                    - /url: /tag/stack/
+                  - link "Monotonic Stack" [ref=e240] [cursor=pointer]:
+                    - /url: /tag/monotonic-stack/
+              - separator [ref=e241]
+              - generic [ref=e244] [cursor=pointer]:
+                - generic [ref=e246]:
+                  - img "icon" [ref=e248]
+                  - generic [ref=e249]: Companies
+                - img [ref=e251]
+              - separator [ref=e253]
+              - generic [ref=e254]:
+                - generic [ref=e255] [cursor=pointer]:
+                  - generic [ref=e257]:
+                    - img [ref=e259]
+                    - generic [ref=e261]: Similar Questions
+                  - img [ref=e263]
+                - generic [ref=e265]:
+                  - generic [ref=e266]:
+                    - link "Container With Most Water" [ref=e270] [cursor=pointer]:
+                      - /url: /problems/container-with-most-water/
+                    - generic [ref=e272]: Medium
+                  - generic [ref=e273]:
+                    - link "Product of Array Except Self" [ref=e277] [cursor=pointer]:
+                      - /url: /problems/product-of-array-except-self/
+                    - generic [ref=e279]: Medium
+                  - generic [ref=e280]:
+                    - link "Trapping Rain Water II" [ref=e284] [cursor=pointer]:
+                      - /url: /problems/trapping-rain-water-ii/
+                    - generic [ref=e286]: Hard
+                  - generic [ref=e287]:
+                    - generic [ref=e288]:
+                      - link "Pour Water" [ref=e291] [cursor=pointer]:
+                        - /url: /problems/pour-water/
+                      - img [ref=e293]
+                    - generic [ref=e296]: Medium
+                  - generic [ref=e297]:
+                    - link "Maximum Value of an Ordered Triplet II" [ref=e301] [cursor=pointer]:
+                      - /url: /problems/maximum-value-of-an-ordered-triplet-ii/
+                    - generic [ref=e303]: Medium
+              - separator [ref=e304]
+              - generic [ref=e306]:
+                - generic [ref=e307] [cursor=pointer]:
+                  - generic [ref=e309]:
+                    - img [ref=e311]
+                    - generic [ref=e313]: Discussion (584)
+                  - img [ref=e315]
+                - generic [ref=e318]:
+                  - generic [ref=e322]:
+                    - textbox "Type comment here..." [ref=e323]
+                    - generic [ref=e324]:
+                      - generic [ref=e325]:
+                        - button "Choose a type" [ref=e329] [cursor=pointer]:
+                          - generic [ref=e330]: Choose a type
+                          - generic:
+                            - generic:
+                              - img
+                        - generic [ref=e331]:
+                          - img [ref=e333] [cursor=pointer]
+                          - img [ref=e336] [cursor=pointer]
+                          - img [ref=e339] [cursor=pointer]
+                          - img [ref=e342] [cursor=pointer]
+                      - button "Comment" [disabled] [ref=e345] [cursor=pointer]
+                  - generic [ref=e346]:
+                    - generic [ref=e348]:
+                      - generic [ref=e349]:
+                        - generic [ref=e350]: 💡 Discussion Rules
+                        - img [ref=e352] [cursor=pointer]
+                      - generic [ref=e354]:
+                        - paragraph [ref=e355]: 1. Please don't post any solutions in this discussion.
+                        - paragraph [ref=e356]: 2. The problem discussion is for asking questions about the problem or for sharing tips - anything except for solutions.
+                        - paragraph [ref=e357]: 3. If you'd like to share your solution for feedback and ideas, please head to the solutions tab and post it there.
+                    - button "Sort by:Best" [ref=e361] [cursor=pointer]:
+                      - generic [ref=e362]:
+                        - generic [ref=e363]: "Sort by:"
+                        - text: Best
+                      - generic:
+                        - img
+                  - generic [ref=e365]: No comments yet.
+                  - navigation [ref=e367]:
+                    - button "prev" [disabled]:
+                      - img
+                    - button "1"
+                    - button "2" [ref=e368] [cursor=pointer]
+                    - button "3" [ref=e369] [cursor=pointer]
+                    - button "4" [ref=e370] [cursor=pointer]
+                    - button "5" [ref=e371] [cursor=pointer]
+                    - button "6" [ref=e372] [cursor=pointer]
+                    - button "gap" [disabled]:
+                      - img
+                    - button "59" [ref=e373] [cursor=pointer]
+                    - button "next" [ref=e374] [cursor=pointer]:
+                      - img [ref=e375]
+            - generic [ref=e378]: Copyright © 2026 LeetCode. All rights reserved.
+          - generic [ref=e381]:
+            - generic [ref=e382]:
+              - generic [ref=e383]:
+                - button "36.5K" [ref=e384] [cursor=pointer]:
+                  - img [ref=e386]
+                  - generic [ref=e388]: 36.5K
+                - button [ref=e390] [cursor=pointer]:
+                  - img [ref=e392]
+              - button "584" [ref=e394] [cursor=pointer]:
+                - img [ref=e396]
+                - generic [ref=e398]: "584"
+            - generic [ref=e400]:
+              - img [ref=e403] [cursor=pointer]
+              - img [ref=e406]
+              - button [ref=e408] [cursor=pointer]:
+                - img [ref=e410]
+        - generic [ref=e413]:
+          - generic [ref=e427]: Ln 1, Col 1
+          - generic [ref=e429]:
+            - text: You need to
+            - link "log in / sign up" [ref=e430] [cursor=pointer]:
+              - /url: /accounts/login/?next=%2Fproblems%2Ftrapping-rain-water%2Fdescription%2F
+            - text: to run or submit
+        - generic:
+          - generic:
+            - generic:
+              - generic [ref=e432]:
+                - generic [ref=e434]:
+                  - button "Case 1" [ref=e435] [cursor=pointer]
+                  - button "Case 2" [ref=e436] [cursor=pointer]
+                  - button [ref=e437] [cursor=pointer]:
+                    - img [ref=e438]
+                - generic [ref=e442]:
+                  - generic [ref=e443]: height =
+                  - generic [ref=e445]: "[0,1,0,2,1,0,1,3,2,1,2,1]"
+              - generic [ref=e446]:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic [ref=e448]:
+                            - generic [ref=e449]: "1"
+                            - generic [ref=e450]: "2"
+                          - textbox [ref=e453]:
+                            - generic [ref=e454]: "[0,1,0,2,1,0,1,3,2,1,2,1]"
+                            - generic [ref=e455]: "[4,2,0,3,2,5]"
+            - generic [ref=e457]:
+              - generic [ref=e459] [cursor=pointer]:
+                - img [ref=e461]
+                - generic [ref=e463]: Source
+              - link [ref=e464] [cursor=pointer]:
+                - /url: https://support.leetcode.com/hc/en-us/articles/32442719377939-How-to-create-test-cases-on-LeetCode
+                - img [ref=e466]
+    - region "Notifications (F8)":
+      - list
+  - alert [ref=e470]

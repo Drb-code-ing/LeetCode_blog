@@ -1,0 +1,1 @@
+[    2359ms] [ERROR] WebSocket connection to 'wss://collaboration-ws.leetcode.com/problems/trapping-rain-water' failed: Error during WebSocket handshake: Unexpected response code: 403 @ https://leetcode.com/_next/static/chunks/pages/problems/%5Bslug%5D/%5B%5B...tab%5D%5D-cc4954418468e1a7.js:704
