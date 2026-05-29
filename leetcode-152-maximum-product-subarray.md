@@ -1,3 +1,11 @@
+---
+title: LeetCode 152. 乘积最大子数组
+tags: [动态规划, Kadane, 数组]
+difficulty: Medium
+category: 动态规划
+date: 2026-05-27
+---
+
 # LeetCode 152. 乘积最大子数组 —— 从最大子数组和到乘积，一个 Kadane 的变体
 
 ## 前言
@@ -223,6 +231,27 @@ var maxProduct = function(nums) {
 };
 ```
 
+```python
+def max_product(nums: list[int]) -> int:
+    """方法二：动态规划（Kadane 变体）"""
+    n = len(nums)
+    max_dp = [0] * n
+    min_dp = [0] * n
+
+    max_dp[0] = min_dp[0] = result = nums[0]
+
+    for i in range(1, n):
+        # 当前位置有三种可能：
+        # 1. 从当前重新开始：nums[i]
+        # 2. 接在上个最大乘积后面：max_dp[i-1] * nums[i]
+        # 3. 接在上个最小乘积后面：min_dp[i-1] * nums[i]
+        max_dp[i] = max(nums[i], max_dp[i-1] * nums[i], min_dp[i-1] * nums[i])
+        min_dp[i] = min(nums[i], max_dp[i-1] * nums[i], min_dp[i-1] * nums[i])
+        result = max(result, max_dp[i])
+
+    return result
+```
+
 #### 方法三：优化空间版（最优）
 
 ```javascript
@@ -250,6 +279,23 @@ var maxProduct = function(nums) {
 
     return result;
 };
+```
+
+```python
+def max_product(nums: list[int]) -> int:
+    """方法三：优化空间版（O(1) 空间）"""
+    prev_max = prev_min = result = nums[0]
+
+    for i in range(1, len(nums)):
+        if nums[i] < 0:
+            # 遇到负数时，最大和最小互换
+            prev_max, prev_min = prev_min, prev_max
+
+        prev_max = max(nums[i], prev_max * nums[i])
+        prev_min = min(nums[i], prev_min * nums[i])
+        result = max(result, prev_max)
+
+    return result
 ```
 
 #### 方法四：双遍历法（巧妙思路）
@@ -280,6 +326,30 @@ var maxProduct = function(nums) {
 
     return result;
 };
+```
+
+```python
+def max_product(nums: list[int]) -> int:
+    """方法四：双遍历法"""
+    result = float('-inf')
+    product = 1
+
+    # 从左到右
+    for num in nums:
+        product *= num
+        result = max(result, product)
+        if product == 0:
+            product = 1  # 遇到 0 重置
+
+    # 从右到左
+    product = 1
+    for num in reversed(nums):
+        product *= num
+        result = max(result, product)
+        if product == 0:
+            product = 1
+
+    return result
 ```
 
 ### 逐步推演

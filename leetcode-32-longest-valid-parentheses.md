@@ -1,3 +1,11 @@
+---
+title: LeetCode 32. 最长有效括号
+tags: [栈, 动态规划, 双指针, 括号匹配]
+difficulty: Hard
+category: 动态规划
+date: 2026-05-29
+---
+
 # LeetCode 32. 最长有效括号 —— 栈、DP、双指针三种解法全覆盖
 
 ## 前言
@@ -209,6 +217,25 @@ var longestValidParentheses = function(s) {
 };
 ```
 
+```python
+def longest_valid_parentheses(s: str) -> int:
+    """方法一：栈"""
+    max_len = 0
+    stack = [-1]  # 哨兵：上一个无法匹配的 ')' 的位置
+
+    for i, ch in enumerate(s):
+        if ch == '(':
+            stack.append(i)  # '(' 的下标入栈
+        else:
+            stack.pop()  # ')' 弹出栈顶匹配
+            if not stack:
+                stack.append(i)  # 栈空了，成为新的起点
+            else:
+                max_len = max(max_len, i - stack[-1])
+
+    return max_len
+```
+
 #### 方法二：动态规划（DP）
 
 ```javascript
@@ -240,6 +267,29 @@ var longestValidParentheses = function(s) {
 
     return maxLen;
 };
+```
+
+```python
+def longest_valid_parentheses(s: str) -> int:
+    """方法二：动态规划（DP）"""
+    n = len(s)
+    dp = [0] * n
+    max_len = 0
+
+    for i in range(1, n):
+        if s[i] == ')':
+            if s[i - 1] == '(':
+                # 情况 2：....()
+                dp[i] = (dp[i - 2] if i >= 2 else 0) + 2
+            else:
+                # 情况 3：....))
+                # 跳过内层有效子串，找外层的 '('
+                match_idx = i - dp[i - 1] - 1
+                if match_idx >= 0 and s[match_idx] == '(':
+                    dp[i] = dp[i - 1] + 2 + (dp[match_idx - 1] if match_idx >= 1 else 0)
+            max_len = max(max_len, dp[i])
+
+    return max_len
 ```
 
 #### 方法三：双指针（空间优化，O(1) 空间）
@@ -288,6 +338,39 @@ var longestValidParentheses = function(s) {
 
     return maxLen;
 };
+```
+
+```python
+def longest_valid_parentheses(s: str) -> int:
+    """方法三：双指针（O(1) 空间）"""
+    max_len = 0
+    left = right = 0
+
+    # 从左到右扫描
+    for ch in s:
+        if ch == '(':
+            left += 1
+        else:
+            right += 1
+        if left == right:
+            max_len = max(max_len, 2 * right)
+        elif right > left:
+            left = right = 0
+
+    left = right = 0
+
+    # 从右到左扫描
+    for ch in reversed(s):
+        if ch == '(':
+            left += 1
+        else:
+            right += 1
+        if left == right:
+            max_len = max(max_len, 2 * left)
+        elif left > right:
+            left = right = 0
+
+    return max_len
 ```
 
 ### 逐步推演

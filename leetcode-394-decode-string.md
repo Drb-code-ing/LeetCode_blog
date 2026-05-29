@@ -1,3 +1,11 @@
+---
+title: LeetCode 394. 字符串解码
+tags: [栈, 递归, 字符串, 嵌套]
+difficulty: Medium
+category: 栈
+date: 2026-05-25
+---
+
 ## 前言
 
 栈（Stack）是解决字符串处理问题的一把利器，特别是当问题涉及**嵌套结构**时——括号匹配、表达式求值、HTML 解析，无一不依赖栈的"先进后出"特性。
@@ -140,6 +148,36 @@ var decodeString = function(s) {
 };
 ```
 
+```python
+def decode_string(s: str) -> str:
+    """双栈法"""
+    num_stack = []   # 存储重复次数
+    str_stack = []   # 存储每一层的字符串
+    curr_num = 0     # 当前正在读取的数字
+    curr_str = ''    # 当前正在构建的字符串
+
+    for ch in s:
+        if ch.isdigit():
+            # 构建多位数
+            curr_num = curr_num * 10 + int(ch)
+        elif ch == '[':
+            # 遇到 '['：将当前状态入栈，然后重置
+            num_stack.append(curr_num)
+            str_stack.append(curr_str)
+            curr_num = 0
+            curr_str = ''
+        elif ch == ']':
+            # 遇到 ']'：出栈，构建当前层的重复字符串
+            repeat_times = num_stack.pop()
+            prev_str = str_stack.pop()
+            curr_str = prev_str + curr_str * repeat_times
+        else:
+            # 普通字母，直接追加
+            curr_str += ch
+
+    return curr_str
+```
+
 ### 递归法实现
 
 ```javascript
@@ -180,6 +218,39 @@ var decodeString = function(s) {
 
     return dfs();
 };
+```
+
+```python
+def decode_string(s: str) -> str:
+    """递归法（DFS）"""
+    i = 0  # 全局指针，在递归函数间共享状态
+
+    def dfs() -> str:
+        nonlocal i
+        result = ''
+        num = 0
+
+        while i < len(s):
+            ch = s[i]
+
+            if ch.isdigit():
+                num = num * 10 + int(ch)
+                i += 1
+            elif ch == '[':
+                i += 1  # 跳过 '['
+                inner_str = dfs()      # 递归解码内部字符串
+                result += inner_str * num
+                num = 0                # 重置数字
+            elif ch == ']':
+                i += 1  # 跳过 ']'
+                return result          # 返回当前层结果
+            else:
+                result += ch
+                i += 1
+
+        return result
+
+    return dfs()
 ```
 
 ---

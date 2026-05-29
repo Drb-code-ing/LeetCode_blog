@@ -1,3 +1,11 @@
+---
+title: LeetCode 84. 柱状图中最大的矩形
+tags: [单调栈, 哨兵技巧]
+difficulty: Hard
+category: 单调栈
+date: 2026-05-25
+---
+
 ## 前言
 
 如果说栈是算法世界的瑞士军刀，那**单调栈（Monotonic Stack）**就是这把刀上最锋利的刃口——专门处理一类问题：**在数组中快速找到每个元素左边（或右边）第一个比它大（或小）的元素**。
@@ -174,6 +182,29 @@ var largestRectangleArea = function(heights) {
 };
 ```
 
+```python
+def largest_rectangle_area(heights: list[int]) -> int:
+    """单调栈 + 哨兵"""
+    stack = []      # 单调递增栈，存储索引
+    max_area = 0
+
+    # 在末尾加一个高度 0 的哨兵，强制清空栈
+    h = heights + [0]
+
+    for i in range(len(h)):
+        # 当前高度小于栈顶高度 → 栈顶无法继续向右扩展，出栈结算
+        while stack and h[i] < h[stack[-1]]:
+            height = h[stack.pop()]           # 出栈柱子的高度
+            right_boundary = i                 # 右边第一个更矮的柱子
+            left_boundary = stack[-1] if stack else -1  # 左边第一个更矮的柱子
+            width = right_boundary - left_boundary - 1
+            max_area = max(max_area, height * width)
+
+        stack.append(i)
+
+    return max_area
+```
+
 ### 逐步推演
 
 以 `heights = [2,1,5,6,2,3]` + 哨兵 `0` 为例：
@@ -276,6 +307,36 @@ var largestRectangleArea = function(heights) {
     }
     return maxArea;
 };
+```
+
+```python
+def largest_rectangle_area(heights: list[int]) -> int:
+    """两次遍历求左右边界"""
+    n = len(heights)
+    left = [-1] * n   # 左边第一个更小的索引
+    right = [n] * n   # 右边第一个更小的索引
+
+    # 求左边第一个更小
+    stack = []
+    for i in range(n):
+        while stack and heights[i] <= heights[stack[-1]]:
+            stack.pop()
+        left[i] = stack[-1] if stack else -1
+        stack.append(i)
+
+    # 清空栈，求右边第一个更小
+    stack.clear()
+    for i in range(n - 1, -1, -1):
+        while stack and heights[i] <= heights[stack[-1]]:
+            stack.pop()
+        right[i] = stack[-1] if stack else n
+        stack.append(i)
+
+    # 计算最大面积
+    max_area = 0
+    for i in range(n):
+        max_area = max(max_area, heights[i] * (right[i] - left[i] - 1))
+    return max_area
 ```
 
 ### 3. 哨兵技巧

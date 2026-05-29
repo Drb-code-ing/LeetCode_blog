@@ -1,3 +1,11 @@
+---
+title: LeetCode 51/52. N 皇后
+tags: [回溯, DFS, 剪枝, 位运算]
+difficulty: Hard
+category: 回溯
+date: 2026-05-25
+---
+
 ## 前言
 
 回溯算法（Backtracking）是 LeetCode 面试中最高频的算法题型之一，它的本质是**在决策树上进行深度优先搜索（DFS）+ 剪枝**——当你需要在一系列选择中寻找所有可行解，且每一步的选择会影响到后续路径时，就该想到回溯。
@@ -144,6 +152,40 @@ var solveNQueens = function(n) {
 };
 ```
 
+```python
+def solve_n_queens(n: int) -> list[list[str]]:
+    """返回所有 N 皇后解"""
+    res = []
+    board = [['.'] * n for _ in range(n)]
+    cols = [False] * n
+    diag1 = [False] * (2 * n)  # 主对角线 (row - col + n - 1)
+    diag2 = [False] * (2 * n)  # 副对角线 (row + col)
+
+    def backtrack(row: int) -> None:
+        if row == n:
+            res.append([''.join(r) for r in board])
+            return
+
+        for col in range(n):
+            d1 = row - col + n - 1
+            d2 = row + col
+            if cols[col] or diag1[d1] or diag2[d2]:
+                continue
+
+            # 做选择
+            board[row][col] = 'Q'
+            cols[col] = diag1[d1] = diag2[d2] = True
+
+            backtrack(row + 1)
+
+            # 撤销选择
+            board[row][col] = '.'
+            cols[col] = diag1[d1] = diag2[d2] = False
+
+    backtrack(0)
+    return res
+```
+
 ### LeetCode 52（只计数）
 
 ```javascript
@@ -177,6 +219,34 @@ var totalNQueens = function(n) {
     backtrack(0);
     return count;
 };
+```
+
+```python
+def total_n_queens(n: int) -> int:
+    """返回解的数量"""
+    count = 0
+    cols = [False] * n
+    diag1 = [False] * (2 * n)
+    diag2 = [False] * (2 * n)
+
+    def backtrack(row: int) -> None:
+        nonlocal count
+        if row == n:
+            count += 1
+            return
+
+        for col in range(n):
+            d1 = row - col + n - 1
+            d2 = row + col
+            if cols[col] or diag1[d1] or diag2[d2]:
+                continue
+
+            cols[col] = diag1[d1] = diag2[d2] = True
+            backtrack(row + 1)
+            cols[col] = diag1[d1] = diag2[d2] = False
+
+    backtrack(0)
+    return count
 ```
 
 ---

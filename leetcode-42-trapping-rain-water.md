@@ -1,3 +1,11 @@
+---
+title: LeetCode 42. 接雨水
+tags: [单调栈, 双指针, 动态规划, 前缀最值]
+difficulty: Hard
+category: 单调栈
+date: 2026-05-25
+---
+
 # LeetCode 42. 接雨水 —— 从核心公式到双指针，三种解法层层递进
 
 ## 前言
@@ -159,6 +167,34 @@ var trap = function(height) {
 };
 ```
 
+```python
+def trap(height: list[int]) -> int:
+    """方法一：动态规划（前缀最大值）"""
+    n = len(height)
+    if n == 0:
+        return 0
+
+    left_max = [0] * n
+    right_max = [0] * n
+
+    # 从左到右：左边最大高度
+    left_max[0] = height[0]
+    for i in range(1, n):
+        left_max[i] = max(left_max[i - 1], height[i])
+
+    # 从右到左：右边最大高度
+    right_max[n - 1] = height[n - 1]
+    for i in range(n - 2, -1, -1):
+        right_max[i] = max(right_max[i + 1], height[i])
+
+    # 累加每个位置的积水量
+    water = 0
+    for i in range(n):
+        water += min(left_max[i], right_max[i]) - height[i]
+
+    return water
+```
+
 #### 方法二：单调栈
 
 ```javascript
@@ -189,6 +225,32 @@ var trap = function(height) {
 
     return water;
 };
+```
+
+```python
+def trap(height: list[int]) -> int:
+    """方法二：单调栈"""
+    stack = []  # 单调递减栈（栈顶最小）
+    water = 0
+
+    for i, h in enumerate(height):
+        # 当前高度 > 栈顶高度 → 形成凹槽，出栈计算
+        while stack and h > height[stack[-1]]:
+            bottom = stack.pop()  # 凹槽底部
+
+            if not stack:  # 左边没有墙了
+                break
+
+            left = stack[-1]  # 左墙索引
+            right = i         # 右墙索引
+
+            h_min = min(height[left], height[right]) - height[bottom]
+            w = right - left - 1
+            water += h_min * w
+
+        stack.append(i)
+
+    return water
 ```
 
 #### 方法三：双指针（最优）
@@ -227,6 +289,31 @@ var trap = function(height) {
 
     return water;
 };
+```
+
+```python
+def trap(height: list[int]) -> int:
+    """方法三：双指针（最优，O(1) 空间）"""
+    left, right = 0, len(height) - 1
+    left_max = right_max = water = 0
+
+    while left < right:
+        if height[left] < height[right]:
+            # 左边是瓶颈，处理左指针
+            if height[left] >= left_max:
+                left_max = height[left]
+            else:
+                water += left_max - height[left]
+            left += 1
+        else:
+            # 右边是瓶颈，处理右指针
+            if height[right] >= right_max:
+                right_max = height[right]
+            else:
+                water += right_max - height[right]
+            right -= 1
+
+    return water
 ```
 
 ### 逐步推演

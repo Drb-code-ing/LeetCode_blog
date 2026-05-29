@@ -1,3 +1,11 @@
+---
+title: LeetCode 207/210. 课程表
+tags: [图论, 拓扑排序, BFS, DFS, 环检测]
+difficulty: Medium
+category: 图论
+date: 2026-05-26
+---
+
 # LeetCode 207/210. 课程表 —— 拓扑排序从入门到精通
 
 ## 前言
@@ -205,6 +213,35 @@ var canFinish = function(numCourses, prerequisites) {
 };
 ```
 
+```python
+def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:
+    """BFS（Kahn 算法）判断是否有环"""
+    # 1. 建图 + 统计入度
+    graph = [[] for _ in range(num_courses)]
+    in_degree = [0] * num_courses
+
+    for course, prereq in prerequisites:
+        graph[prereq].append(course)  # prereq → course
+        in_degree[course] += 1        # course 的入度 +1
+
+    # 2. 初始化队列：所有入度为 0 的节点
+    queue = [i for i in range(num_courses) if in_degree[i] == 0]
+
+    # 3. BFS 拓扑排序
+    visited = 0
+    while queue:
+        node = queue.pop(0)
+        visited += 1
+
+        for neighbor in graph[node]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+
+    # 4. 如果访问了所有节点 → 无环
+    return visited == num_courses
+```
+
 ### 返回学习顺序（LeetCode 210）
 
 只需要在 207 的基础上，把访问顺序记录下来：
@@ -246,6 +283,31 @@ var findOrder = function(numCourses, prerequisites) {
 };
 ```
 
+```python
+def find_order(num_courses: int, prerequisites: list[list[int]]) -> list[int]:
+    """BFS（Kahn 算法）返回学习顺序"""
+    graph = [[] for _ in range(num_courses)]
+    in_degree = [0] * num_courses
+
+    for course, prereq in prerequisites:
+        graph[prereq].append(course)
+        in_degree[course] += 1
+
+    queue = [i for i in range(num_courses) if in_degree[i] == 0]
+    order = []
+
+    while queue:
+        node = queue.pop(0)
+        order.append(node)
+
+        for neighbor in graph[node]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+
+    return order if len(order) == num_courses else []
+```
+
 ### DFS 解法（判断环）
 
 ```javascript
@@ -281,6 +343,36 @@ var canFinish = function(numCourses, prerequisites) {
 
     return true;
 };
+```
+
+```python
+def can_finish_dfs(num_courses: int, prerequisites: list[list[int]]) -> bool:
+    """DFS 判断是否有环"""
+    graph = [[] for _ in range(num_courses)]
+    for course, prereq in prerequisites:
+        graph[prereq].append(course)
+
+    # 0 = 未访问, 1 = 访问中, 2 = 已访问
+    visited = [0] * num_courses
+
+    def dfs(node: int) -> bool:
+        if visited[node] == 1:
+            return False  # 发现环
+        if visited[node] == 2:
+            return True   # 已经检查过
+
+        visited[node] = 1  # 标记为当前路径中
+        for neighbor in graph[node]:
+            if not dfs(neighbor):
+                return False
+        visited[node] = 2  # 标记为已处理完毕
+        return True
+
+    for i in range(num_courses):
+        if visited[i] == 0 and not dfs(i):
+            return False
+
+    return True
 ```
 
 ### DFS 解法（返回学习顺序）
@@ -319,6 +411,37 @@ var findOrder = function(numCourses, prerequisites) {
 
     return order.reverse();  // 需要反转：先修课在前面
 };
+```
+
+```python
+def find_order_dfs(num_courses: int, prerequisites: list[list[int]]) -> list[int]:
+    """DFS 返回学习顺序"""
+    graph = [[] for _ in range(num_courses)]
+    for course, prereq in prerequisites:
+        graph[prereq].append(course)
+
+    visited = [0] * num_courses  # 0:未访问 1:访问中 2:已访问
+    order = []
+
+    def dfs(node: int) -> bool:
+        if visited[node] == 1:
+            return False
+        if visited[node] == 2:
+            return True
+
+        visited[node] = 1
+        for neighbor in graph[node]:
+            if not dfs(neighbor):
+                return False
+        visited[node] = 2
+        order.append(node)  # 后序加入：先完成依赖，再加入自己
+        return True
+
+    for i in range(num_courses):
+        if visited[i] == 0 and not dfs(i):
+            return []
+
+    return order[::-1]  # 需要反转：先修课在前面
 ```
 
 > **注意**：DFS 版本在返回学习顺序时，使用的是**后序遍历**——先递归处理所有邻接节点，再将当前节点加入结果。这样最先加入的是最深层的课程（依赖链末端的），所以最后需要将结果反转。

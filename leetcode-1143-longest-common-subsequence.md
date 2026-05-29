@@ -1,3 +1,11 @@
+---
+title: LeetCode 1143. 最长公共子序列
+tags: [动态规划, 二维DP, 序列匹配, 回溯]
+difficulty: Medium
+category: 动态规划
+date: 2026-05-28
+---
+
 # LeetCode 1143. 最长公共子序列 —— 从 DP 表格到序列重建，两种方法彻底掌握 LCS
 
 ## 前言
@@ -210,6 +218,23 @@ var longestCommonSubsequence = function(text1, text2) {
 };
 ```
 
+```python
+def longest_common_subsequence(text1: str, text2: str) -> int:
+    """方法一：动态规划（DP）"""
+    m, n = len(text1), len(text2)
+    # dp[i][j] 表示 text1[0..i-1] 和 text2[0..j-1] 的 LCS 长度
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if text1[i - 1] == text2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+
+    return dp[m][n]
+```
+
 #### 方法二：DP + 栈回溯（还原 LCS 序列）
 
 ```javascript
@@ -265,6 +290,44 @@ function longestCommonSubsequenceWithSequence(text1, text2) {
 }
 ```
 
+```python
+def longest_common_subsequence_with_sequence(text1: str, text2: str) -> dict:
+    """方法二：DP + 栈回溯（还原 LCS 序列）"""
+    m, n = len(text1), len(text2)
+
+    # 1. 标准 DP 填表
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if text1[i - 1] == text2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+
+    # 2. 栈回溯：从 dp[m][n] 反向追踪
+    stack = []
+    i, j = m, n
+
+    while i > 0 and j > 0:
+        if text1[i - 1] == text2[j - 1]:
+            # 匹配到了！入栈，沿对角线移动
+            stack.append(text1[i - 1])
+            i -= 1
+            j -= 1
+        elif dp[i - 1][j] >= dp[i][j - 1]:
+            # 向上移动（优先选择值更大的方向）
+            i -= 1
+        else:
+            # 向左移动
+            j -= 1
+
+    # 3. 栈中元素出栈即为正确的顺序
+    sequence = ''.join(reversed(stack))
+
+    return {"length": dp[m][n], "sequence": sequence}
+```
+
 #### 方法三：空间优化版（滚动数组）
 
 由于 `dp[i][j]` 只依赖 `dp[i-1][j-1]`（左上）、`dp[i-1][j]`（上）、`dp[i][j-1]`（左），我们可以用两行（甚至一行加一个变量）来优化空间。
@@ -298,6 +361,27 @@ var longestCommonSubsequence = function(text1, text2) {
 
     return prev[n];
 };
+```
+
+```python
+def longest_common_subsequence(text1: str, text2: str) -> int:
+    """方法三：空间优化版（滚动数组，O(n) 空间）"""
+    m, n = len(text1), len(text2)
+
+    # 只保留两行：prev 是上一行，curr 是当前行
+    prev = [0] * (n + 1)
+    curr = [0] * (n + 1)
+
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if text1[i - 1] == text2[j - 1]:
+                curr[j] = prev[j - 1] + 1
+            else:
+                curr[j] = max(prev[j], curr[j - 1])
+        # 交换两行
+        prev, curr = curr, prev
+
+    return prev[n]
 ```
 
 > **注意**：空间优化版只适用于求 LCS 长度，无法用于回溯还原序列（因为只保留了两行的 DP 值，回溯需要完整表格）。
