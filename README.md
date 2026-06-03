@@ -45,6 +45,7 @@
 
 | # | 题目 | 难度 | 核心考点 | 解法 |
 |---|------|------|---------|------|
+| 6 | [Z 字形变换](./leetcode-6-zigzag-conversion.md) | 🟡 Medium | 周期公式、索引定位 | 暴力模拟 / 逐行追踪 / 数学公式 |
 | 12 | [整数转罗马数字](./leetcode-12-integer-to-roman-and-13-roman-to-integer.md) | 🟡 Medium | 贪心、映射表 | 贪心匹配 / 按位处理 |
 | 13 | [罗马数字转整数](./leetcode-12-integer-to-roman-and-13-roman-to-integer.md) | 🟢 Easy | 哈希表、相邻比较 | 一次遍历 / 从右到左 |
 
@@ -77,17 +78,20 @@
 ### 「贪心 + 映射表」—— 固定符号体系转换
 - [12/13. 整数与罗马数字互转](./leetcode-12-integer-to-roman-and-13-roman-to-integer.md) — 贪心匹配 + 哈希表映射
 
+### 「周期定位」—— 用公式直接找索引
+- [6. Z 字形变换](./leetcode-6-zigzag-conversion.md) — 周期 = 2*numRows-2，逐行按索引取字符
+
 ---
 
 ## 📈 数据统计
 
 | 指标 | 数值 |
 |------|------|
-| 总题数 | **9** 道（含变体共 12 题） |
-| 🔴 Hard | 4 道 (44%) |
-| 🟡 Medium | 4 道 (44%) |
-| 🟢 Easy | 1 道 (12%) |
-| 覆盖算法专题 | 7 大类 |
+| 总题数 | **10** 道（含变体共 13 题） |
+| 🔴 Hard | 4 道 (40%) |
+| 🟡 Medium | 5 道 (50%) |
+| 🟢 Easy | 1 道 (10%) |
+| 覆盖算法专题 | 8 大类 |
 | 代码语言 | JavaScript + Python |
 
 ---
