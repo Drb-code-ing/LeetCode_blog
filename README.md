@@ -49,6 +49,13 @@
 | 12 | [整数转罗马数字](./leetcode-12-integer-to-roman-and-13-roman-to-integer.md) | 🟡 Medium | 贪心、映射表 | 贪心匹配 / 按位处理 |
 | 13 | [罗马数字转整数](./leetcode-12-integer-to-roman-and-13-roman-to-integer.md) | 🟢 Easy | 哈希表、相邻比较 | 一次遍历 / 从右到左 |
 
+### 🔑 哈希表系列（双射映射）
+
+| # | 题目 | 难度 | 核心考点 | 解法 |
+|---|------|------|---------|------|
+| 205 | [同构字符串](./leetcode-205-isomorphic-strings-and-290-word-pattern.md) | 🟢 Easy | 双射映射、字符编码 | 双向哈希表 / 标准化编码 / 首次出现索引 |
+| 290 | [单词规律](./leetcode-205-isomorphic-strings-and-290-word-pattern.md) | 🟢 Easy | 双射映射、字符→单词 | 双向哈希表 / 标准化编码 / 首次出现索引 |
+
 ### 🪟 滑动窗口系列
 
 | # | 题目 | 难度 | 核心考点 | 解法 |
@@ -87,6 +94,9 @@
 ### 「滑动窗口」—— 双指针 + 哈希表计数
 - [76. 最小覆盖子串](./leetcode-76-minimum-window-substring.md) — right 凑齐覆盖，left 收缩到最短
 
+### 「双射映射」—— 双向哈希表检查一一对应
+- [205. 同构字符串 & 290. 单词规律](./leetcode-205-isomorphic-strings-and-290-word-pattern.md) — 字符/单词级别的结构模式匹配
+
 ### 「周期定位」—— 用公式直接找索引
 - [6. Z 字形变换](./leetcode-6-zigzag-conversion.md) — 周期 = 2*numRows-2，逐行按索引取字符
 
@@ -96,11 +106,11 @@
 
 | 指标 | 数值 |
 |------|------|
-| 总题数 | **11** 道（含变体共 14 题） |
-| 🔴 Hard | 5 道 (45%) |
-| 🟡 Medium | 5 道 (45%) |
-| 🟢 Easy | 1 道 (9%) |
-| 覆盖算法专题 | 9 大类 |
+| 总题数 | **13** 道（含变体共 16 题） |
+| 🔴 Hard | 5 道 (38%) |
+| 🟡 Medium | 5 道 (38%) |
+| 🟢 Easy | 3 道 (23%) |
+| 覆盖算法专题 | 10 大类 |
 | 代码语言 | JavaScript + Python |
 
 ---
