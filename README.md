@@ -68,6 +68,7 @@
 | # | 题目 | 难度 | 核心考点 | 解法 |
 |---|------|------|---------|------|
 | 146 | [LRU 缓存](./leetcode-146-lru-cache.md) | 🟡 Medium | HashMap + 双向链表、哨兵节点、缓存淘汰 | 手动双向链表 / 内置有序字典 |
+| 173 | [二叉搜索树迭代器](./leetcode-173-binary-search-tree-iterator.md) | 🟡 Medium | 栈模拟递归、受控中序遍历、迭代器设计 | 栈 + 一路向左 |
 
 ### 🔑 哈希表系列
 
@@ -134,6 +135,9 @@
 ### 「HashMap + 双向链表」—— O(1) 缓存淘汰
 - [146. LRU 缓存](./leetcode-146-lru-cache.md) — 哈希表负责 O(1) 查找，双向链表负责 O(1) 维护访问顺序
 
+### 「栈模拟递归」—— 受控遍历 / 迭代器设计
+- [173. 二叉搜索树迭代器](./leetcode-173-binary-search-tree-iterator.md) — 用栈保存中序遍历上下文，每次 next() 只走一步，均摊 O(1)、空间 O(h)
+
 ### 「链表操作」—— 穿针引线 + 哑节点
 - [92. 翻转链表 II](./leetcode-92-reverse-linked-list-ii.md) — 头插法（穿针引线），dummy 节点统一边界，prev/cur 不动旋转段内节点
 - [25. K 个一组翻转链表](./leetcode-25-reverse-nodes-in-k-group.md) — 分组反转，每 k 个一组做"以 nextGroup 为边界的标准反转"，用 prevGroup 串起各组
@@ -144,10 +148,10 @@
 
 | 指标 | 数值 |
 |------|------|
-| 总题数 | **19** 道（含变体共 22 题） |
-| 🔴 Hard | 7 道 (37%) |
-| 🟡 Medium | 9 道 (47%) |
-| 🟢 Easy | 3 道 (16%) |
+| 总题数 | **20** 道（含变体共 23 题） |
+| 🔴 Hard | 7 道 (35%) |
+| 🟡 Medium | 10 道 (50%) |
+| 🟢 Easy | 3 道 (15%) |
 | 覆盖算法专题 | 15 大类 |
 | 代码语言 | JavaScript + Python |
 
