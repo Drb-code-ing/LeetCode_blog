@@ -33,6 +33,7 @@
 
 | # | 题目 | 难度 | 核心考点 | 解法 |
 |---|------|------|---------|------|
+| 17 | [电话号码的字母组合](./leetcode-17-letter-combinations-of-a-phone-number.md) | 🟡 Medium | 回溯、决策树、笛卡尔积 | 回溯 DFS / 迭代法 |
 | 51/52 | [N 皇后](./leetcode-51-n-queens-backtracking.md) | 🔴 Hard | 回溯模板、对角线剪枝 | 标准回溯 / 位运算优化 |
 
 ### 🔗 图论系列
@@ -111,6 +112,7 @@
 - [152. 乘积最大子数组](./leetcode-152-maximum-product-subarray.md) — 乘法的非单调性
 
 ### 「回溯模板」—— 做选择 → 递归 → 撤销选择
+- [17. 电话号码的字母组合](./leetcode-17-letter-combinations-of-a-phone-number.md) — 回溯入门：决策树 DFS + 笛卡尔积迭代法
 - [51. N 皇后](./leetcode-51-n-queens-backtracking.md) — 经典回溯模板
 - [46. 全排列](https://leetcode.com/problems/permutations/) (关联) | [39. 组合总和](https://leetcode.com/problems/combination-sum/) (关联)
 
@@ -161,11 +163,11 @@
 
 | 指标 | 数值 |
 |------|------|
-| 总题数 | **22** 道（含变体共 25 题） |
-| 🔴 Hard | 8 道 (36%) |
-| 🟡 Medium | 10 道 (45%) |
-| 🟢 Easy | 4 道 (18%) |
-| 覆盖算法专题 | 17 大类 |
+| 总题数 | **23** 道（含变体共 26 题） |
+| 🔴 Hard | 8 道 (35%) |
+| 🟡 Medium | 11 道 (48%) |
+| 🟢 Easy | 4 道 (17%) |
+| 覆盖算法专题 | 17 大类（回溯、图论、DP、链表等） |
 | 代码语言 | JavaScript + Python |
 
 ---
